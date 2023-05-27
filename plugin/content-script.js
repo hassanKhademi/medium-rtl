@@ -9,33 +9,33 @@
     [\u07C1-\u07C9]|[\u07CC-\u07E9] - Thâna
 */
 const patt = /[\u05D0-\u05EA]|[\u0620-\u063F]|[\u0641-\u064A]|[\u0675-\u06D3]|[\u0710-\u071C]|[\u071E-\u072F]|[\u074E-\u077F]|[\u08A0-\u08AC]|[\u08AE-\u08B4]|[\u07C1-\u07C9]|[\u07CC-\u07E9]/g;
-
-let run_on_page = () =>
-{
+/***
+ * سلام به همه 
+ * هر کسی که میخواد اینو توسعه بده  دمتش گرم 
+ * خودم فقط اینو رو خودم فورک کردم از یکجا دیگه :)
+ */
+let run_on_page = () => {
     document
-        // TODO - optimise this. no need to go over all the elements
-        .querySelectorAll('.postArticle-content, section.eh, p, h1, h2, h3, header')
-        .forEach(el =>
-        {
-            if ( !patt.test(el.textContent) ) return;
-            el.style.direction = 'rtl';
-            el.style.textAlign = 'right';
-            el.style.fontFamily = 'sans-serif';
-
-            if (el.nodeName === 'HEADER')
-            {
-                let avatar = el.querySelector('.avatar');
-                if (avatar) avatar.style.marginLeft = '10px';
-                let follow = el.querySelector('.followState');
-                if (follow) follow.style.marginRight = '10px';
-            }
-        });
+    // TODO - optimise this. no need to go over all the elements
+    const elem = document.querySelectorAll('[class^="ChatMessage_messageWrapper"]')
+    console.log('elem', elem)
+    elem.forEach(el => {
+        if (!patt.test(el.textContent)) return;
+        el.style.direction = 'rtl';
+        el.style.textAlign = 'right';
+        el.style.fontFamily = 'sans-serif'; 
+        if (el.nodeName === 'HEADER') {
+            let avatar = el.querySelector('.avatar');
+            if (avatar) avatar.style.marginLeft = '10px';
+            let follow = el.querySelector('.followState');
+            if (follow) follow.style.marginRight = '10px';
+        }
+    });
 
     document
         .querySelectorAll('ol, ul')
-        .forEach(el =>
-        {
-            if ( !patt.test(el.textContent) ) return;
+        .forEach(el => {
+            if (!patt.test(el.textContent)) return;
             el.classList.add('rtl');
         })
 };
