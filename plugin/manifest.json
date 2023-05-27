@@ -1,20 +1,14 @@
 {
-  "name": "Medium right to left support (open source)",
-  "version": "0.4",
+  "name": "راست چین سگه برای تیم پادسایت",
+  "version": "0.1",
+  "manifest_version": 3,
   "minimum_chrome_version": "49.0",
-  "description": "Set RTL support for Medium articles",
-  "icons": { "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png" },
+  "description": "Set RTL support for poe.com",
+  "icons": { "16": "icon.png", "48": "icon.png", "128": "icon.png" },
   "content_scripts": [
     {
-      "matches": [
-        "https://medium.com/*"
-      ],
-      "js": [
-        "content-script.js"
-      ]
+      "matches": ["https://poe.com/*"],
+      "js": ["content-script.js"]
     }
-  ],
-  "manifest_version": 2
+  ]
 }
